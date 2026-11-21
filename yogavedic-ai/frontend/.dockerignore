@@ -1,0 +1,65 @@
+# .dockerignore for the frontend build context (./frontend).
+# The Dockerfile does `COPY . .` and then `npm run build`, so every build
+# input (index.html, src/, vite/tailwind/postcss configs, package-lock.json)
+# and nginx.conf must stay in the context - they are intentionally NOT listed.
+# Docker patterns are matched from the context root, so "**/" is used
+# to match at any depth.
+
+# Environment files - never bake local env files into an image.
+# NOTE: Vite inlines VITE_* values from .env files into the JS bundle at
+# build time, so a local .env here would otherwise end up in the image.
+**/.env
+**/.env.*
+**/*.env
+
+# Version control
+**/.git
+**/.gitignore
+
+# Dependencies (installed fresh by `npm ci` inside the image)
+**/node_modules
+
+# Build output (rebuilt inside the image), caches, coverage
+**/dist
+**/build
+**/coverage
+**/.nyc_output
+**/.vite
+**/.cache
+**/.eslintcache
+**/*.tsbuildinfo
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Private keys and certificates
+**/*.pem
+**/*.key
+**/*.crt
+**/*.cer
+**/*.der
+**/*.p12
+**/*.pfx
+**/*.jks
+**/*.keystore
+**/id_rsa
+**/id_rsa.*
+**/id_ed25519
+**/id_ed25519.*
+
+# OS / editor metadata and temporary files
+**/.DS_Store
+**/._*
+**/Thumbs.db
+**/Desktop.ini
+**/.idea
+**/.vscode
+**/*.swp
+**/*.swo
+**/*~
+**/*.tmp
+**/*.temp

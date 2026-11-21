@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------
+# YogaVedic - root .gitignore
+# Applies to the whole repository (backend/, frontend/, docs/).
+# ---------------------------------------------------------------
+
+# --- Environment files (may contain real secrets) ---------------
+# Ignore every .env variant at any depth...
+.env
+.env.*
+*.env
+# ...but keep the safe, placeholder-only example files.
+!.env.example
+!.env.*.example
+!*.env.example
+
+# --- Private keys and certificates ------------------------------
+*.pem
+*.key
+*.crt
+*.cer
+*.der
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+
+# --- Dependencies -----------------------------------------------
+node_modules/
+
+# --- Build output and caches ------------------------------------
+dist/
+build/
+.vite/
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# --- Test coverage ----------------------------------------------
+coverage/
+.nyc_output/
+
+# --- Logs -------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Operating-system metadata ----------------------------------
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Editor / IDE files -----------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Temporary files --------------------------------------------
+*.tmp
+*.temp
+tmp/
+temp/

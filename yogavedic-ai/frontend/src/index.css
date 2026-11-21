@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App-wide ambient background — applied automatically wherever the
+   bg-night-deep utility is used, so every full-screen page gets the same
+   rich, atmospheric backdrop without editing each page individually. */
+.bg-night-deep {
+  background-color: #121126;
+  background-image:
+    radial-gradient(at 12% 8%, rgba(232, 163, 61, 0.12) 0px, transparent 45%),
+    radial-gradient(at 88% 12%, rgba(124, 156, 122, 0.10) 0px, transparent 45%),
+    radial-gradient(at 50% 100%, rgba(217, 113, 78, 0.08) 0px, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Card surfaces get a faint top-light glass sheen for extra depth */
+.bg-night {
+  background-color: #1B1A33;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 40%);
+}
+
+/* Reusable glassmorphism surface for cards / panels */
+.glass-card {
+  background-color: rgba(27, 26, 51, 0.6);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 45%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(243, 235, 221, 0.08);
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.glass-card:hover {
+  border-color: rgba(232, 163, 61, 0.25);
+  box-shadow: 0 16px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Gradient text for headline accents */
+.gradient-text {
+  background-image: linear-gradient(135deg, #F3C474 0%, #E8A33D 45%, #D9714E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Primary CTA button — gradient fill, lift + glow on hover */
+.btn-glow {
+  position: relative;
+  background-image: linear-gradient(135deg, #F3C474 0%, #E8A33D 55%, #C7822A 100%);
+  box-shadow: 0 8px 24px -8px rgba(232, 163, 61, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.btn-glow:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 14px 38px -8px rgba(232, 163, 61, 0.65);
+  transform: translateY(-1px);
+}
+.btn-glow:active {
+  transform: translateY(0) scale(0.98);
+}
+
+::selection {
+  background-color: theme('colors.turmeric.DEFAULT');
+  color: theme('colors.night.deep');
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.turmeric.DEFAULT');
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Prana ring — signature breathing motif used on landing + live session */
+.prana-ring {
+  border-radius: 50%;
+  border: 1px solid theme('colors.turmeric.DEFAULT');
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: theme('colors.night.soft');
+  border-radius: 4px;
+}
+
+/* Subtle lift-on-hover for interactive cards / tiles */
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
